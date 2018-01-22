@@ -1,0 +1,24 @@
+<center>  
+  <h1>All Hail The Memes</h1>
+  <div>
+    <table class = "table table-bordered table-responsive">
+    <% counter = 0 %>
+    <tr>
+      <% @images.each do |image| %>
+      	<td colspan = "4">
+          <center>
+        		 <a href="<%=image.imageurl%>" ><img src="<%=image.imageurl%>"></a>
+        		<br>
+        		<% user = User.find_by(userid: image.userid) %>
+        		<h1><%= user.firstname + " " + user.lastname%></h1>
+          </center>
+    	  </td>
+
+        <% counter = counter+1 %>
+        <% if counter %3 == 0%>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</center>
